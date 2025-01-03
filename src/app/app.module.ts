@@ -4,10 +4,14 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyTableComponent } from './modules/my-module/my-table/my-table.component';
+import { SortableDirective } from './shared/sortable-directive/sortable.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MyTableComponent,
+    SortableDirective
   ],
   imports: [
     BrowserModule,

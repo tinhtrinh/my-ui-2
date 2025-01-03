@@ -1,0 +1,63 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            @for(column of displayedColumns; track $index) {
+                @if(column != 'Check Box') {
+                    <th 
+                        [headers]="column"
+                        appSortableDirective
+                        (sortChange)="sortChange($event)"
+                        [defaultSortDirection]="column == 'Date' ? 'desc' : ''"
+                    >
+                        {{ column }}
+                        <i #sortIcon class="invisible bi bi-arrow-down"></i>
+                    </th>
+                }
+
+                @if(column == 'Check Box') {
+                    <th> {{ column }} </th>
+                }
+            }
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(row of rowData; track $index) {
+            <tr>
+                @for(cell of row; track cell.name) {
+                    <td [attr.rowspan]="cell.rowspan">
+                        @switch(cell.type) {
+                            @default {
+                                @if(!cell.link) {
+                                    <span>{{ cell.content }}</span>
+                                } @else {
+                                    <a [routerLink]="cell.link">{{ cell.content }}</a>
+                                }
+                            }
+
+                            @case(DATE) {
+                                @if(!cell.link) {
+                                    <span>{{ cell.content | date }}</span>
+                                } @else {
+                                    <a [routerLink]="cell.link">{{ cell.content | date }}</a>
+                                }
+                            }
+
+                            @case(DATE_TIME) {
+                                @if(!cell.link) {
+                                    <span>{{ cell.content | date:'medium' }}</span>
+                                } @else {
+                                    <a [routerLink]="cell.link">{{ cell.content | date:'medium' }}</a>
+                                }
+                            }
+
+                            @case(CHECKBOX) {
+                                <input class="form-check-input" type="checkbox" disabled [checked]="cell.content">
+                            }
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

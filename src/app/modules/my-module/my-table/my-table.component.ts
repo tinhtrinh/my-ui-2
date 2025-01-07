@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractTable, ICell } from '../../../shared/table/abstract-table';
+import { MyNewModalComponent } from '../my-new-modal/my-new-modal.component';
 
 @Component({
   selector: 'app-my-table',
@@ -127,4 +128,8 @@ export class MyTableComponent extends AbstractTable {
       },
     ],
   ];
+
+  openMyNewModal(): void {
+    this.openModal(MyNewModalComponent);
+  }
 }

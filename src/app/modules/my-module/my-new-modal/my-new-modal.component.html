@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title">Hi there!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+
+<div class="modal-body" [formGroup]="formGroup">
+    <p>Hello, My New Modal!</p>
+    <div class="mb-3 p-2 position-relative" appUndoDirective>
+        <label for="userName">User Name</label>
+        <i 
+            #undoIcon 
+            class="invisible bi bi-arrow-90deg-left position-absolute end-0" 
+            style="cursor: pointer;"
+        ></i>
+
+        <input 
+            id="userName"
+            type="text"
+            class="form-control" 
+            placeholder="Username" 
+            formControlName="userName"
+        >
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Close</button>
+    <button type="button" class="btn btn-outline-primary" (click)="onSubmit()">Submit</button>
+</div>

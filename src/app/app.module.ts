@@ -6,17 +6,24 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyTableComponent } from './modules/my-module/my-table/my-table.component';
 import { SortableDirective } from './shared/sortable-directive/sortable.directive';
+import { UndoDirective } from './shared/undo-directive/undo.directive';
+import { MyNewModalComponent } from './modules/my-module/my-new-modal/my-new-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyTableComponent,
-    SortableDirective
+    SortableDirective,
+    UndoDirective,
+    MyNewModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

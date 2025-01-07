@@ -1,4 +1,7 @@
+import { AbstractModal } from "../modal/abstract-modal";
 import { AppSortEvent } from "../sortable-directive/sortable.directive";
+import { inject, Type } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export interface ICell {
     name: string;
@@ -18,5 +21,16 @@ export abstract class AbstractTable {
     displayedColumns: Array<string> = [];
     rowData: Array<Array<ICell>> = [];
 
+    private modalService = inject(NgbModal);
+
     sortChange(event: AppSortEvent): void {}
+
+    openModal(modalComponent: Type<AbstractModal>, inputData?: any, callback?: Function): void {
+        const modalRef = this.modalService.open(modalComponent);
+        modalRef.componentInstance.inputData = inputData;
+
+        modalRef.closed.subscribe((res) => {
+            if(res && callback) callback(res);
+        })
+    }
 }

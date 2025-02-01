@@ -9,6 +9,8 @@ import { SortableDirective } from './shared/sortable-directive/sortable.directiv
 import { UndoDirective } from './shared/undo-directive/undo.directive';
 import { MyNewModalComponent } from './modules/my-module/my-new-modal/my-new-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DisplayPermissionDirective } from './shared/display-permission-directive/display-permission.directive';
+import { LinkPermissionDirective } from './shared/link-permission-directive/link-permission.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MyTableComponent,
     SortableDirective,
     UndoDirective,
-    MyNewModalComponent
+    MyNewModalComponent,
+    DisplayPermissionDirective,
+    LinkPermissionDirective
   ],
   imports: [
     BrowserModule,

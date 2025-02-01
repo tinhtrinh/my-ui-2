@@ -1,1 +1,12 @@
-<app-my-table></app-my-table>
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    @for(tab of tabs; track $index) {
+        <li ngbNavItem>
+            <button ngbNavLink>{{ tab.label }}</button>
+            <ng-template ngbNavContent>
+                <ng-container *ngComponentOutlet="tab.componentOutlet"></ng-container>
+            </ng-template>
+        </li>
+    }
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
